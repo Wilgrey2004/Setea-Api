@@ -75,6 +75,16 @@ namespace Api.Controller
                 // 3. Insertar una nueva venta
                 [HttpPost]
                 public JsonResult PostVenta( [FromBody] Venta venta ) {
+                       
+                                               if (!ModelState.IsValid)
+                        {
+                                var error = ModelState.Values
+                                .SelectMany(v => v.Errors)
+                                .Select(e => e.ErrorMessage)
+                                .ToList();
+                                return new JsonResult(new { message = "Error en la forma del Modelo 'Ventas' :", error }) { StatusCode = 404 };
+                        }
+                       
                         using (Microsoft.Data.SqlClient.SqlConnection cn = conexion.GetConnection())
                         {
                                 cn.Open();
@@ -94,6 +104,16 @@ namespace Api.Controller
                 // 4. Actualizar una venta
                 [HttpPut("{id}")]
                 public JsonResult PutVenta( [FromRoute] int id, [FromBody] Venta venta ) {
+                        
+                        if (!ModelState.IsValid)
+                        {
+                                var error = ModelState.Values
+                                .SelectMany(v => v.Errors)
+                                .Select(e => e.ErrorMessage)
+                                .ToList();
+                                return new JsonResult(new { message = "Error en la forma del Modelo 'Ventas' :", error }) { StatusCode = 404 };
+                        }
+
                         using (Microsoft.Data.SqlClient.SqlConnection cn = conexion.GetConnection())
                         {
                                 cn.Open();
@@ -120,8 +140,6 @@ namespace Api.Controller
                                 {
                                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
                                         cmd.Parameters.AddWithValue("@Id", id);
-                           
-
                                         int resultado = cmd.ExecuteNonQuery();
                                         return new JsonResult(new { success = resultado > 0, message = resultado > 0 ? "Venta Eliminada correctamente" : "Error al Eliminada la venta" });
                                 }

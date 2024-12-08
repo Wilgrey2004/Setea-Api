@@ -2312,11 +2312,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Wilgrey\\Desktop\\Api-Josue\\Api\\Api.csproj",
+      "projectUniqueName": "D:\\Itla\\Poyectos\\Api-Josue\\Setea-Api\\Api\\Api.csproj",
       "projectName": "Api",
-      "projectPath": "C:\\Users\\Wilgrey\\Desktop\\Api-Josue\\Api\\Api.csproj",
+      "projectPath": "D:\\Itla\\Poyectos\\Api-Josue\\Setea-Api\\Api\\Api.csproj",
       "packagesPath": "C:\\Users\\Wilgrey\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Wilgrey\\Desktop\\Api-Josue\\Api\\obj\\",
+      "outputPath": "D:\\Itla\\Poyectos\\Api-Josue\\Setea-Api\\Api\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -77,6 +77,15 @@ namespace Api.Controller
                 public JsonResult PostProducto( [FromBody] Producto producto ) {
                         using (Microsoft.Data.SqlClient.SqlConnection cn = conexion.GetConnection())
                         {
+                                if (!ModelState.IsValid)
+                                {
+                                        var error = ModelState.Values
+                                             .SelectMany(v => v.Errors)
+                                             .Select(e => e.ErrorMessage)
+                                             .ToList();
+
+                                        return new JsonResult(new { message = "Error en la forma del Modelo 'Producto' :", error }) { StatusCode = 404 };
+                                }
                                 cn.Open();
                                 using (Microsoft.Data.SqlClient.SqlCommand cmd = new Microsoft.Data.SqlClient.SqlCommand("Sp_Insert_In_Productos", cn))
                                 {
@@ -95,6 +104,17 @@ namespace Api.Controller
                 // 4. Actualizar un producto
                 [HttpPut("{id}")]
                 public JsonResult PutProducto( [FromRoute] int id, [FromBody] Producto producto ) {
+
+                        if (!ModelState.IsValid)
+                        {
+                                var error = ModelState.Values
+                                     .SelectMany(v => v.Errors)
+                                     .Select(e => e.ErrorMessage)
+                                     .ToList();
+
+                                return new JsonResult(new { message = "Error en la forma del Modelo 'Producto' :", error }) { StatusCode = 404 };
+                        }
+
                         using (Microsoft.Data.SqlClient.SqlConnection cn = conexion.GetConnection())
                         {
                                 cn.Open();

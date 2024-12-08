@@ -69,6 +69,15 @@ namespace Api.Controller
                 // 3. Insertar una nueva categoría
                 [HttpPost]
                 public JsonResult PostCategoria( [FromBody] Categoria categoria ) {
+                        if (!ModelState.IsValid)
+                        {
+                                var error = ModelState.Values
+                                     .SelectMany(v => v.Errors)
+                                     .Select(e => e.ErrorMessage)
+                                     .ToList();
+
+                                return new JsonResult(new { message = "Error en la forma del Modelo 'Categoria' :", error }) { StatusCode = 404 };
+                        }
                         using (Microsoft.Data.SqlClient.SqlConnection cn = conexion.GetConnection())
                         {
                                 cn.Open();
@@ -81,11 +90,23 @@ namespace Api.Controller
                                         return new JsonResult(new { success = resultado > 0, message = resultado > 0 ? "Categoría registrada correctamente" : "Error al registrar la categoría" });
                                 }
                         }
+
                 }
 
                 // 4. Actualizar una categoría
                 [HttpPut("{id}")]
                 public JsonResult PutCategoria( [FromRoute] int id, [FromBody] Categoria categoria ) {
+
+                        if (!ModelState.IsValid)
+                        {
+                                var error = ModelState.Values
+                                     .SelectMany(v => v.Errors)
+                                     .Select(e => e.ErrorMessage)
+                                     .ToList();
+
+                                return new JsonResult(new { message = "Error en la forma del Modelo 'Categoria' :", error }) { StatusCode = 404 };
+                        }
+
                         using (Microsoft.Data.SqlClient.SqlConnection cn = conexion.GetConnection())
                         {
                                 cn.Open();

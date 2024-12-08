@@ -17,6 +17,16 @@ namespace Api.Controller
                 // 1. Insertar un nuevo registro de auditoría
                 [HttpPost]
                 public JsonResult PostAuditoria( [FromBody] Auditoria auditoria ) {
+                        
+                        if (!ModelState.IsValid)
+                        {
+                                var error = ModelState.Values
+                                .SelectMany(v => v.Errors)
+                                .Select(e => e.ErrorMessage)
+                                .ToList();
+                                return new JsonResult(new { message = "Error en la forma del Modelo 'Auditoria' :", error }) { StatusCode = 404 };
+                        }
+                        
                         using (var cn = _conexion.GetConnection())
                         {
                                 cn.Open();
@@ -35,6 +45,16 @@ namespace Api.Controller
                 // 2. Actualizar un registro de auditoría
                 [HttpPut("{id}")]
                 public JsonResult PutAuditoria( [FromRoute] int id, [FromBody] Auditoria auditoria ) {
+
+                        if (!ModelState.IsValid)
+                        {
+                                var error = ModelState.Values
+                                .SelectMany(v => v.Errors)
+                                .Select(e => e.ErrorMessage)
+                                .ToList();
+                                return new JsonResult(new { message = "Error en la forma del Modelo 'Auditoria' :", error }) { StatusCode = 404 };
+                        }
+
                         using (var cn = _conexion.GetConnection())
                         {
                                 cn.Open();
