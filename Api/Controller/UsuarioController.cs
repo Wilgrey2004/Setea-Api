@@ -77,6 +77,16 @@ namespace Api.Controller
                 // 3. Insertar un nuevo usuario
                 [HttpPost]
                 public JsonResult PostUsuario( [FromBody] Usuario usuario ) {
+                        
+                        if (!ModelState.IsValid)
+                        {
+                                var error = ModelState.Values
+                                .SelectMany(v => v.Errors)
+                                .Select(e => e.ErrorMessage)
+                                .ToList();
+                                return new JsonResult(new { message = "Error en la forma del Modelo 'Usuario' :", error }) { StatusCode = 404 };
+                        }
+                        
                         using (Microsoft.Data.SqlClient.SqlConnection cn = conexion.GetConnection())
                         {
                                 cn.Open();
@@ -97,6 +107,14 @@ namespace Api.Controller
                 // 4. Actualizar un usuario
                 [HttpPut("{id}")]
                 public JsonResult PutUsuario( [FromRoute] int id, [FromBody] Usuario usuario ) {
+                        if (!ModelState.IsValid)
+                        {
+                                var error = ModelState.Values
+                                .SelectMany(v => v.Errors)
+                                .Select(e => e.ErrorMessage)
+                                .ToList();
+                                return new JsonResult(new { message = "Error en la forma del Modelo 'Usuario' :", error }) { StatusCode = 404 };
+                        }
                         using (Microsoft.Data.SqlClient.SqlConnection cn = conexion.GetConnection())
                         {
                                 cn.Open();

@@ -75,6 +75,16 @@ namespace Api.Controller
                 [HttpPost]
                 public JsonResult PostInventario( Inventario inv ) {
                         
+                                                if (!ModelState.IsValid)
+                        {
+                                var error = ModelState.Values
+                                .SelectMany(v => v.Errors)
+                                .Select(e => e.ErrorMessage)
+                                .ToList();
+                                return new JsonResult(new { message = "Error en la forma del Modelo 'Inventario' :", error }) { StatusCode = 404 };
+                        }
+
+
                         using (Microsoft.Data.SqlClient.SqlConnection cn = conexion.GetConnection())
                         {
                                 cn.Open();
@@ -86,7 +96,7 @@ namespace Api.Controller
                                         cmd.Parameters.AddWithValue("@StockMinimo", inv.StockMinimo);
 
                                         int resultado = cmd.ExecuteNonQuery();
-                                       
+                                        
                                         if (resultado > 0)
                                         {
                                                 return new JsonResult(new { success = true, message = "Correcto" });
@@ -101,6 +111,15 @@ namespace Api.Controller
                 [HttpPut("{IdInventario}")]
                 public JsonResult PutInventario( [FromRoute] int IdInventario,[FromBody] Inventario inv ) {
                         
+                        if (!ModelState.IsValid)
+                        {
+                                var error = ModelState.Values
+                                .SelectMany(v => v.Errors)
+                                .Select(e => e.ErrorMessage)
+                                .ToList();
+                                return new JsonResult(new { message = "Error en la forma del Modelo 'Inventario' :", error }) { StatusCode = 404 };
+                        }
+
                         using (Microsoft.Data.SqlClient.SqlConnection cn = conexion.GetConnection())
                         {
                                 cn.Open();

@@ -17,6 +17,16 @@ namespace Api.Controller
                 // 1. Insertar un nuevo detalle de venta
                 [HttpPost]
                 public JsonResult PostDetalleVenta( [FromBody] DetallesVenta detalleVenta ) {
+                        
+                        if (!ModelState.IsValid)
+                        {
+                                var error = ModelState.Values
+                                .SelectMany(v => v.Errors)
+                                .Select(e => e.ErrorMessage)
+                                .ToList();
+                                return new JsonResult(new { message = "Error en la forma del Modelo 'Detalles Venta' :", error }) { StatusCode = 404 };
+                        }
+                        
                         using (var cn = _conexion.GetConnection())
                         {
                                 cn.Open();
@@ -37,6 +47,16 @@ namespace Api.Controller
                 // 2. Actualizar un detalle de venta
                 [HttpPut("{id}")]
                 public JsonResult PutDetalleVenta( [FromRoute] int id, [FromBody] DetallesVenta detalleVenta ) {
+                        
+                        if (!ModelState.IsValid)
+                        {
+                                var error = ModelState.Values
+                                .SelectMany(v => v.Errors)
+                                .Select(e => e.ErrorMessage)
+                                .ToList();
+                                return new JsonResult(new { message = "Error en la forma del Modelo 'Detalles Venta' :", error }) { StatusCode = 404 };
+                        }
+                        
                         using (var cn = _conexion.GetConnection())
                         {
                                 cn.Open();

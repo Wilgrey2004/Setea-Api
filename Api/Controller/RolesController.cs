@@ -69,6 +69,16 @@ namespace Api.Controller
                 // 3. Insertar un nuevo rol
                 [HttpPost]
                 public JsonResult PostRol( [FromBody] Roles rol ) {
+                        if (!ModelState.IsValid)
+                        {
+                                var error = ModelState.Values
+                                     .SelectMany(v => v.Errors)
+                                     .Select(e => e.ErrorMessage)
+                                     .ToList();
+
+                                return new JsonResult(new { message = "Error en la forma del Modelo 'Roles' :", error }) { StatusCode = 404 };
+                        }
+
                         using (Microsoft.Data.SqlClient.SqlConnection cn = conexion.GetConnection())
                         {
                                 cn.Open();
@@ -86,6 +96,17 @@ namespace Api.Controller
                 // 4. Actualizar un rol
                 [HttpPut("{id}")]
                 public JsonResult PutRol( [FromRoute] int id, [FromBody] Roles rol ) {
+
+                        if (!ModelState.IsValid)
+                        {
+                                var error = ModelState.Values
+                                     .SelectMany(v => v.Errors)
+                                     .Select(e => e.ErrorMessage)
+                                     .ToList();
+
+                                return new JsonResult(new { message = "Error en la forma del Modelo 'Roles' :", error }) { StatusCode = 404 };
+                        }
+
                         using (Microsoft.Data.SqlClient.SqlConnection cn = conexion.GetConnection())
                         {
                                 cn.Open();

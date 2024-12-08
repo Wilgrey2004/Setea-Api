@@ -69,6 +69,16 @@ namespace Api.Controller
                 // 3. Insertar un nuevo método de pago
                 [HttpPost]
                 public JsonResult PostMetodoPago( [FromBody] MetodosPago metodoPago ) {
+                        
+                        if (!ModelState.IsValid)
+                        {
+                                var error = ModelState.Values
+                                .SelectMany(v => v.Errors)
+                                .Select(e => e.ErrorMessage)
+                                .ToList();
+                                return new JsonResult(new { message = "Error en la forma del Modelo 'Metodos De Pago' :", error }) { StatusCode = 404 };
+                        }
+                        
                         using (Microsoft.Data.SqlClient.SqlConnection cn = conexion.GetConnection())
                         {
                                 cn.Open();
@@ -86,6 +96,16 @@ namespace Api.Controller
                 // 4. Actualizar un método de pago
                 [HttpPut("{id}")]
                 public JsonResult PutMetodoPago( [FromRoute] int id, [FromBody] MetodosPago metodoPago ) {
+                        
+                        if (!ModelState.IsValid)
+                        {
+                                var error = ModelState.Values
+                                .SelectMany(v => v.Errors)
+                                .Select(e => e.ErrorMessage)
+                                .ToList();
+                                return new JsonResult(new { message = "Error en la forma del Modelo 'Metodos De Pago' :", error }) { StatusCode = 404 };
+                        }
+
                         using (Microsoft.Data.SqlClient.SqlConnection cn = conexion.GetConnection())
                         {
                                 cn.Open();

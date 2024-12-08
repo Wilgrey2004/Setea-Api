@@ -17,6 +17,16 @@ namespace Api.Controller
                 // 1. Insertar una nueva relación entre promoción y producto
                 [HttpPost]
                 public JsonResult PostPromocionProducto( [FromBody] PromocionesProductos promocionProducto ) {
+                        
+                        if (!ModelState.IsValid)
+                        {
+                                var error = ModelState.Values
+                                .SelectMany(v => v.Errors)
+                                .Select(e => e.ErrorMessage)
+                                .ToList();
+                                return new JsonResult(new { message = "Error en la forma del Modelo 'Promociones Productos' :", error }) { StatusCode = 404 };
+                        }
+
                         using (var cn = _conexion.GetConnection())
                         {
                                 cn.Open();
@@ -35,6 +45,16 @@ namespace Api.Controller
                 // 2. Actualizar una relación entre promoción y producto
                 [HttpPut("{id}")]
                 public JsonResult PutPromocionProducto( [FromRoute] int id, [FromBody] PromocionesProductos promocionProducto ) {
+                        
+                        if (!ModelState.IsValid)
+                        {
+                                var error = ModelState.Values
+                                .SelectMany(v => v.Errors)
+                                .Select(e => e.ErrorMessage)
+                                .ToList();
+                                return new JsonResult(new { message = "Error en la forma del Modelo 'Promociones Productos' :", error }) { StatusCode = 404 };
+                        }
+
                         using (var cn = _conexion.GetConnection())
                         {
                                 cn.Open();

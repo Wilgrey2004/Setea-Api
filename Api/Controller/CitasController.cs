@@ -17,6 +17,16 @@ namespace Api.Controller
                 // 1. Insertar una nueva cita
                 [HttpPost]
                 public JsonResult PostCita( [FromBody] Citas cita ) {
+                        
+                        if (!ModelState.IsValid)
+                        {
+                                var error = ModelState.Values
+                                .SelectMany(v => v.Errors)
+                                .Select(e => e.ErrorMessage)
+                                .ToList();
+                                return new JsonResult(new { message = "Error en la forma del Modelo 'Citas' :", error }) { StatusCode = 404 };
+                        }
+                        
                         using (var cn = _conexion.GetConnection())
                         {
                                 cn.Open();
@@ -37,6 +47,16 @@ namespace Api.Controller
                 // 2. Actualizar una cita
                 [HttpPut("{id}")]
                 public JsonResult PutCita( [FromRoute] int id, [FromBody] Citas cita ) {
+                        
+                        if (!ModelState.IsValid)
+                        {
+                                var error = ModelState.Values
+                                .SelectMany(v => v.Errors)
+                                .Select(e => e.ErrorMessage)
+                                .ToList();
+                                return new JsonResult(new { message = "Error en la forma del Modelo 'Citas' :", error }) { StatusCode = 404 };
+                        }
+                        
                         using (var cn = _conexion.GetConnection())
                         {
                                 cn.Open();
@@ -106,7 +126,7 @@ namespace Api.Controller
                 // 5. Obtener una cita por ID
                 [HttpGet("{id}")]
                 public ActionResult<Citas> GetCita( [FromRoute] int id ) {
-                        Citas citaReturn = null;
+                        Citas? citaReturn = null;
 
                         using (var cn = _conexion.GetConnection())
                         {

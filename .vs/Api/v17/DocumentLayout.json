@@ -1,18 +1,10 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Wilgrey\\Desktop\\Api-Josue\\",
+  "WorkspaceRootPath": "D:\\Itla\\Poyectos\\Api-Josue\\Setea-Api\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{41046C8A-401C-4B40-9D54-060F2FDCB65D}|Api\\Api.csproj|c:\\users\\wilgrey\\desktop\\api-josue\\api\\controller\\promocionesproductoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{41046C8A-401C-4B40-9D54-060F2FDCB65D}|Api\\Api.csproj|solutionrelative:api\\controller\\promocionesproductoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{41046C8A-401C-4B40-9D54-060F2FDCB65D}|Api\\Api.csproj|c:\\users\\wilgrey\\desktop\\api-josue\\api\\controller\\promocionescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{41046C8A-401C-4B40-9D54-060F2FDCB65D}|Api\\Api.csproj|solutionrelative:api\\controller\\promocionescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{41046C8A-401C-4B40-9D54-060F2FDCB65D}|Api\\Api.csproj|c:\\users\\wilgrey\\desktop\\api-josue\\api\\controller\\detallesventascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{41046C8A-401C-4B40-9D54-060F2FDCB65D}|Api\\Api.csproj|solutionrelative:api\\controller\\detallesventascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{41046C8A-401C-4B40-9D54-060F2FDCB65D}|Api\\Api.csproj|d:\\itla\\poyectos\\api-josue\\setea-api\\api\\models\\entidades\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41046C8A-401C-4B40-9D54-060F2FDCB65D}|Api\\Api.csproj|solutionrelative:api\\models\\entidades\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,50 +14,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "PromocionesProductosController.cs",
-              "DocumentMoniker": "C:\\Users\\Wilgrey\\Desktop\\Api-Josue\\Api\\Controller\\PromocionesProductosController.cs",
-              "RelativeDocumentMoniker": "Api\\Controller\\PromocionesProductosController.cs",
-              "ToolTip": "C:\\Users\\Wilgrey\\Desktop\\Api-Josue\\Api\\Controller\\PromocionesProductosController.cs",
-              "RelativeToolTip": "Api\\Controller\\PromocionesProductosController.cs",
-              "ViewState": "AgIAAHUAAAAAAAAAAAAQwGUAAAAtAAAAAAAAAA==",
+              "Title": "Usuario.cs",
+              "DocumentMoniker": "D:\\Itla\\Poyectos\\Api-Josue\\Setea-Api\\Api\\Models\\Entidades\\Usuario.cs",
+              "RelativeDocumentMoniker": "Api\\Models\\Entidades\\Usuario.cs",
+              "ToolTip": "D:\\Itla\\Poyectos\\Api-Josue\\Setea-Api\\Api\\Models\\Entidades\\Usuario.cs",
+              "RelativeToolTip": "Api\\Models\\Entidades\\Usuario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-06T23:13:54.381Z",
+              "WhenOpened": "2024-12-08T18:24:28.464Z",
               "EditorCaption": ""
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "PromocionesController.cs",
-              "DocumentMoniker": "C:\\Users\\Wilgrey\\Desktop\\Api-Josue\\Api\\Controller\\PromocionesController.cs",
-              "RelativeDocumentMoniker": "Api\\Controller\\PromocionesController.cs",
-              "ToolTip": "C:\\Users\\Wilgrey\\Desktop\\Api-Josue\\Api\\Controller\\PromocionesController.cs",
-              "RelativeToolTip": "Api\\Controller\\PromocionesController.cs",
-              "ViewState": "AgIAAGUAAAAAAAAAAAAQwG8AAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-06T23:08:22.632Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "DetallesVentasController.cs",
-              "DocumentMoniker": "C:\\Users\\Wilgrey\\Desktop\\Api-Josue\\Api\\Controller\\DetallesVentasController.cs",
-              "RelativeDocumentMoniker": "Api\\Controller\\DetallesVentasController.cs",
-              "ToolTip": "C:\\Users\\Wilgrey\\Desktop\\Api-Josue\\Api\\Controller\\DetallesVentasController.cs",
-              "RelativeToolTip": "Api\\Controller\\DetallesVentasController.cs",
-              "ViewState": "AgIAAHcAAAAAAAAAAAAQwIoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-06T23:06:27.347Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             }
           ]
         }

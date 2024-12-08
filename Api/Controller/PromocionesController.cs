@@ -17,6 +17,16 @@ namespace Api.Controller
                 // 1. Insertar una nueva promoción
                 [HttpPost]
                 public JsonResult PostPromocion( [FromBody] Promociones promocion ) {
+                        
+                        if (!ModelState.IsValid)
+                        {
+                                var error = ModelState.Values
+                                .SelectMany(v => v.Errors)
+                                .Select(e => e.ErrorMessage)
+                                .ToList();
+                                return new JsonResult(new { message = "Error en la forma del Modelo 'Promociones' :", error }) { StatusCode = 404 };
+                        }
+                        
                         using (var cn = _conexion.GetConnection())
                         {
                                 cn.Open();
@@ -38,6 +48,16 @@ namespace Api.Controller
                 // 2. Actualizar una promoción
                 [HttpPut("{id}")]
                 public JsonResult PutPromocion( [FromRoute] int id, [FromBody] Promociones promocion ) {
+                        
+                        if (!ModelState.IsValid)
+                        {
+                                var error = ModelState.Values
+                                .SelectMany(v => v.Errors)
+                                .Select(e => e.ErrorMessage)
+                                .ToList();
+                                return new JsonResult(new { message = "Error en la forma del Modelo 'Promociones' :", error }) { StatusCode = 404 };
+                        }
+                        
                         using (var cn = _conexion.GetConnection())
                         {
                                 cn.Open();

@@ -17,6 +17,16 @@ namespace Api.Controller
                 // 1. Insertar un nuevo cliente
                 [HttpPost]
                 public JsonResult PostCliente( [FromBody] Cliente cliente ) {
+                        
+                        if (!ModelState.IsValid)
+                        {
+                                var error = ModelState.Values
+                                .SelectMany(v => v.Errors)
+                                .Select(e => e.ErrorMessage)
+                                .ToList();
+                                return new JsonResult(new { message = "Error en la forma del Modelo 'Clientes' :", error }) { StatusCode = 404 };
+                        }
+                        
                         using (var cn = _conexion.GetConnection())
                         {
                                 cn.Open();
@@ -36,6 +46,16 @@ namespace Api.Controller
                 // 2. Actualizar un cliente
                 [HttpPut("{id}")]
                 public JsonResult PutCliente( [FromRoute] int id, [FromBody] Cliente cliente ) {
+                        
+                        if (!ModelState.IsValid)
+                        {
+                                var error = ModelState.Values
+                                .SelectMany(v => v.Errors)
+                                .Select(e => e.ErrorMessage)
+                                .ToList();
+                                return new JsonResult(new { message = "Error en la forma del Modelo 'Clientes' :", error }) { StatusCode = 404 };
+                        }
+
                         using (var cn = _conexion.GetConnection())
                         {
                                 cn.Open();
